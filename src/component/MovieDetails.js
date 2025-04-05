@@ -10,7 +10,7 @@ const MovieDetalis = () => {
   // Fetch movie data from API using the provided ID
   const getMovieDetails = async () => {
     const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=11bc80027156504151cd361a873222a7&language=ar`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ar`
     );
     setMovie(res.data);
   };

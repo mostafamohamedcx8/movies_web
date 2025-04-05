@@ -14,7 +14,7 @@ function App() {
 
   const getAllMovies = async () => {
     const res = await axios.get(
-      "https://api.themoviedb.org/3/movie/popular?api_key=11bc80027156504151cd361a873222a7&language=ar"
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ar`
     );
     setMovies(res.data.results);
     settotalPage(res.data.total_pages);
@@ -31,7 +31,7 @@ function App() {
       getAllMovies();
     } else {
       const res = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=11bc80027156504151cd361a873222a7&query=${word}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${word}`
       );
       setMovies(res.data.results);
       settotalPage(res.data.total_pages);
@@ -43,11 +43,11 @@ function App() {
     let res;
     if (searchWord !== "") {
       res = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=11bc80027156504151cd361a873222a7&query=${searchWord}&page=${page}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${searchWord}&page=${page}`
       );
     } else {
       res = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=11bc80027156504151cd361a873222a7&page=${page}`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${page}`
       );
     }
     setMovies(res.data.results);
